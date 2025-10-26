@@ -41,50 +41,66 @@ All services are containerized using Docker and stored on AWS ECR.
 ### System Architecture
 
 ```mermaid
-flowchart LR
-    subgraph Client
-        UI[React Frontend]
+graph TD
+    %% --- Definitions & Styling ---
+    classDef frontend fill:#D1E8FF,stroke:#007bff,stroke-width:2px,font-weight:bold;
+    classDef service fill:#CFF0CC,stroke:#28a745,stroke-width:2px;
+    classDef specialSvc fill:#E2D1FF,stroke:#6f42c1,stroke-width:2px;
+    classDef gateway fill:#F8D7DA,stroke:#dc3545,stroke-width:2px,font-weight:bold;
+    classDef db fill:#FFF3CD,stroke:#ffc107,stroke-width:2px;
+
+    %% --- Top-Level Nodes ---
+    FE([Frontend Client])
+    TTS(TTS Service)
+    
+    class FE frontend;
+    class TTS service;
+
+    %% --- Backend Subgraph ---
+    subgraph Backend Microservices
+        direction TD
+        
+        APIGW(API Gateway)
+        class APIGW gateway;
+
+        %% --- Authentication Sub-Flow ---
+        subgraph Authentication Flow
+            direction LR
+            Auth(Auth Service)
+            UserSvc(User Service)
+            UserDB[(User-DB<br>Credentials)]
+            
+            class Auth,UserSvc service;
+            class UserDB db;
+        end
+
+        %% --- Question Service Sub-Flow ---
+        subgraph Question Flow
+            direction TD
+            QS(Question Service)
+            AISvc(AI Service)
+            SessionDB[(Session-DB<br>MongoDB)]
+            
+            class QS service;
+            class AISvc specialSvc;
+            class SessionDB db;
+        end
+        
+        %% --- Backend Internal Connections ---
+        APIGW -- "1. Request with JWT" --> Auth
+        Auth -- "2. Verify User" --> UserSvc
+        UserSvc -- "3. Validate Credentials" --> UserDB
+        
+        APIGW -- "4. Authenticated Request" --> QS
+        QS -- "gRPC Call" --> AISvc
+        QS -- "Store/Read Exam Session" --> SessionDB
+        QS -- "Link Session to User" --> UserSvc
     end
 
-    subgraph API[API Gateway]
-        GW[API Gateway Service]
-    end
-
-    subgraph Auth
-        AUTH[Authentication Service]
-        UDB[(Postgres - User DB)]
-    end
-
-    subgraph Users
-        US[User Service]
-    end
-
-    subgraph AI
-        AIS[AI Service]
-        TTS[Text-to-Speech Service]
-        GEMINI[Gemini API]
-    end
-
-    subgraph Questions
-        QS[Question Service]
-        MDB[(MongoDB - Questions DB)]
-    end
-
-    UI --> GW
-
-    GW --> AUTH
-    AUTH --> UDB
-
-    GW --> US
-
-    GW --> AIS
-    AIS --> GEMINI
-    AIS --> TTS
-
-    GW --> QS
-    QS --> MDB
+    %% --- Top-Level Connections ---
+    FE <== "All Text-to-Speech" ==> TTS
+    FE <== "All Main API Requests" ==> APIGW
 ```
-
 ### Architecture Flow
 
 - API Gateway handles all incoming requests and routes them to the appropriate services.
