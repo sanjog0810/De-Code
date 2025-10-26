@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+auth:
+  service:
+    url: http://authentic-service:4001
+
+spring:
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+    gateway:
+      routes:
+        - id: auth-service
+          uri: http://authentic-service:4001
+          predicates:
+            - Path=/auth/**
+
+        - id: user-service
+          uri: http://user-service:4000
+          predicates:
+            - Path=/api/users/**
+
+        - id: question-service
+          uri: http://question-service:4003
+          predicates:
+            - Path=/api/questions/**
+
+        - id: ai-service
+          uri: http://ai-service:4002
+          predicates:
+            - Path=/ai/**

@@ -1,0 +1,11 @@
+
+POST http://54.87.197.194:4001/auth/login
+content-type: application/json
+
+{
+"username": "user1",
+"email": "user1@mock.com",
+"password": "11111111"
+}
+
+###

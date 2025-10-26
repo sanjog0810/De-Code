@@ -1,0 +1,8 @@
+POST http://localhost:4002/ai/reply
+Content-Type: application/json
+
+{
+  "prompt": "you are gemini right?"
+}
+
+

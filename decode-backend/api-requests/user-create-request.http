@@ -1,0 +1,11 @@
+### GET request to example server
+POST http://localhost:4000/api/users
+content-type: application/json
+
+{
+  "username": "abhay",
+  "email": "abhay@example.com",
+  "password": "securepass123"
+}
+
+###

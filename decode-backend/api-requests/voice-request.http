@@ -1,0 +1,7 @@
+### GET request to example server
+POST http://localhost:5050/api/text-to-speech
+Content-Type: text/plain
+
+Hello, I will be your interviewer today. You can see the coding question in front of you, so take your time to read it carefully and understand what is being asked. If you have any doubts, need clarifications, or want me to explain anything, please do not hesitate to ask at any point. I am here to help and guide you through this process, so feel free to reach out whenever necessary, and focus on solving the problem with confidence.
+
+###

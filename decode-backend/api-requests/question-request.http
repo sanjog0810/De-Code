@@ -1,0 +1,3 @@
+GET http://localhost:8081/api/questions/random
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImVtYWlsIjoidXNlcjFAbW9jay5jb20iLCJpYXQiOjE3NjEyMTQxNzksImV4cCI6MTc2MTI1MDE3OX0.uHOf3rjLjmPD8WXa0aS1UJTQDI254JX-P2iJ0ecuYS0
+
