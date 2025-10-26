@@ -5,13 +5,11 @@ DECODE is a web platform that lets users practice mock interviews and improve th
 ---
 
 ## Screenshots
-
-*Add images of the DECODE platform here* 
-
 <img width="1891" height="1079" alt="Screenshot 2025-10-27 030341" src="https://github.com/user-attachments/assets/551e7e88-dabd-46c0-8475-a1c4c32cd1b8" />
 
+### Exam Simulation
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/e53ff851-4e00-4e08-b1fa-7d83bed34d7f" />
 
-<img width="958" height="539" alt="image" src="https://github.com/user-attachments/assets/237181e0-3b67-4acf-b564-b0133281fbce" />
 
 
 ---
