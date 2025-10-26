@@ -1,9 +1,8 @@
-// src/services/apiClient.js
 import axios from 'axios';
 import { getToken } from '../utils/cookieHelper';
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8081', // ✅ Use the API Gateway port
+  baseURL: import.meta.env.VITE_API_BASE_URL, // ✅ Use Vite env variable
   withCredentials: true,
 });
 
