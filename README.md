@@ -40,7 +40,8 @@ All services are containerized using Docker and stored on AWS ECR.
 
 ### System Architecture
 
-```mermaid
+```
+mermaid
 graph TD
     %% --- Definitions & Styling ---
     classDef frontend fill:#D1E8FF,stroke:#007bff,stroke-width:2px,font-weight:bold;
@@ -58,7 +59,6 @@ graph TD
 
     %% --- Backend Subgraph ---
     subgraph Backend Microservices
-        direction TD
         
         APIGW(API Gateway)
         class APIGW gateway;
@@ -76,7 +76,6 @@ graph TD
 
         %% --- Question Service Sub-Flow ---
         subgraph Question Flow
-            direction TD
             QS(Question Service)
             AISvc(AI Service)
             SessionDB[(Session-DB<br>MongoDB)]
