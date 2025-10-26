@@ -1,0 +1,104 @@
+/* src/components/LeftPane/ProblemDetails.module.css */
+.container {
+  /* This is the card styling */
+  background-color: #2d2d2d; /* Grey background */
+  color: #f0f0f0; /* White-ish text */
+  border-radius: 8px; /* Rounded border */
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Hide overflow, let statement scroll */
+}
+
+/* --- Tab styles --- */
+.tabs {
+  display: flex;
+  padding: 0.5rem 1rem 0;
+  border-bottom: 1px solid #444;
+  flex-shrink: 0;
+}
+.tabButton {
+  background: none;
+  border: none;
+  color: #aaa;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.tabButton.active {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* --- Problem statement --- */
+.statement {
+  padding: 1rem 1.5rem;
+  flex-grow: 1;
+  overflow-y: auto; /* Allow statement to scroll */
+  line-height: 1.6;
+  overflow: auto;           /* Keep scrolling functional */
+  scrollbar-width: none;    /* Firefox */
+  -ms-overflow-style: none;
+}
+
+/* Style common HTML tags from the problem description */
+.statement p {
+  margin-bottom: 1rem;
+}
+.statement pre {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  overflow-x: auto; /* still scrollable */
+  scrollbar-width: none;    /* Firefox */
+  -ms-overflow-style: none;
+}
+.statement::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+.statement pre::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+.statement code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #444;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+.statement ul {
+  padding-left: 2rem;
+}
+
+/* --- Action Bar --- */
+.spacer {
+  flex-grow: 0;
+}
+.actionBar {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid #444;
+  flex-shrink: 0;
+  color: #aaa;
+}
+.actionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+.actionItem:hover {
+  color: #fff;
+}
+.actionIcon {
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+.actionIcon:hover {
+  color: #fff;
+}

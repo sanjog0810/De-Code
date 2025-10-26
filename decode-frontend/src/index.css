@@ -1,0 +1,28 @@
+/* src/index.css */
+:root {
+  /* Define custom colors to match LeetCode's dark theme */
+  --dark-bg-1: #1a1a1a; /* Deepest background */
+  --dark-bg-2: #282828; /* Component backgrounds */
+  --dark-bg-3: #3c3c3c; /* Borders, hover */
+  --dark-text-1: #eff1f6bf; /* Faded text */
+  --dark-text-2: #f7faff;   /* Bright text */
+  --dark-green: rgb(74 222 128);
+  --dark-yellow: rgb(250 204 15);
+  --dark-blue: #3b82f6;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--dark-bg-1);
+  color: var(--dark-text-2);
+}
+
+* {
+  box-sizing: border-box;
+}

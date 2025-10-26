@@ -1,0 +1,139 @@
+/* ==== DECODE Global Theme ==== */
+:root {
+    --background-dark: #0a0a0f;
+    --section-dark: #11111a;
+    --section-darker: #0d0d14;
+    --primary: #6366f1; /* Indigo-500 */
+    --primary-glow: #818cf8;
+    --text-light: #e5e7eb;
+    --text-muted: #9ca3af;
+    --border-dark: #1f1f29;
+    --card-bg: #1a1a23;
+  }
+  
+  /* ==== Global Reset ==== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    font-family: 'Inter', 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  /* ==== Smooth Scrollbar ==== */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--section-dark);
+  }
+  
+  /* ==== Hero Section Gradient ==== */
+  section:first-of-type {
+    background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.2), transparent 60%),
+                radial-gradient(circle at 70% 70%, rgba(147, 51, 234, 0.15), transparent 60%),
+                var(--section-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  section:first-of-type::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    filter: blur(100px);
+    opacity: 0.5;
+  }
+  
+  /* ==== Button Hover Effects ==== */
+  a.bg-indigo-600, 
+  a.bg-gray-700, 
+  a.bg-white {
+    transition: all 0.25s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  a.bg-indigo-600:hover {
+    background-color: var(--primary-glow);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  }
+  
+  a.bg-gray-700:hover {
+    background-color: #4b5563;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+  
+  a.bg-white:hover {
+    background-color: #d1d5db;
+    transform: translateY(-2px);
+  }
+  
+  /* ==== Section Transitions ==== */
+  section {
+    transition: background 0.4s ease, color 0.3s ease;
+  }
+  
+  /* ==== Headings ==== */
+  h1, h2, h3 {
+    background: linear-gradient(to right, #818cf8, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  h1 span, h2 span {
+    color: var(--primary);
+  }
+  
+  /* ==== Cards ==== */
+  .bg-gray-800 {
+    background-color: var(--card-bg) !important;
+    backdrop-filter: blur(12px);
+  }
+  
+  .bg-gray-800:hover {
+    transform: translateY(-6px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+  }
+  
+  /* ==== Fade-in Animation ==== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  section, .bg-gray-800 {
+    animation: fadeInUp 1.2s ease forwards;
+  }
+  
+  /* ==== Section Alternating Backgrounds ==== */
+  section:nth-of-type(even) {
+    background-color: var(--section-darker);
+  }
+  
+  /* ==== Footer Styling ==== */
+  footer {
+    background: linear-gradient(to right, #11111a, #0a0a0f);
+    border-top: 1px solid var(--border-dark);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 1.5rem;
+  }
+  

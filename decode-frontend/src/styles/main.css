@@ -1,0 +1,739 @@
+/* --- Global Styles for DECODE --- */
+
+:root {
+  --background-color: #000000;
+  --card-background: #0a0a0a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --border-color: #333333;
+  --input-background: #1a1a1a;
+  --button-background: #ffffff;
+  --button-text: #0a0a0a;
+  --button-hover-background: #e0e0e0;
+  --color-accent: #00ff99; /* Bright Tech Green */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Utility Classes --- */
+.container {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+}
+
+.full-width {
+  max-width: none !important; /* overrides .container max-width */
+  width: 100%;
+  padding: 50px 20px; /* optional spacing */
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: flex-start; /* aligns content to left instead of center */
+}
+
+/* =========================================
+--- 1. Auth Page Styles (New Grid Layout) ---
+=========================================
+*/
+
+.auth-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile-first: 1 column */
+  height: 100vh;
+  width: 100%;
+  background-color: var(--background-color);
+}
+
+.auth-form-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;
+}
+
+.auth-card {
+  
+  padding: 30px 35px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  animation: authCardFadeIn 0.6s ease-out;
+}
+
+@keyframes authCardFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-branding-panel {
+  display: none; /* Hidden on mobile */
+  background-color: var(--color-accent);
+  color: #000;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.branding-content {
+  max-width: 450px;
+  animation: authCardFadeIn 0.6s ease-out 0.2s;
+  animation-fill-mode: backwards;
+}
+
+.branding-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.branding-subtitle {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 2.5rem;
+}
+
+.branding-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.branding-features li {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.branding-features .check-icon {
+  stroke: #000;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* --- Auth Form Content --- */
+.header {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.tagline {
+  color: var(--text-secondary);
+  margin-bottom: 35px;
+  font-size: 1rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-background);
+  color: var(--text-primary);
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
+}
+
+/* --- Button Styles --- */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #000; /* Black text on bright green */
+  border: 1px solid var(--color-accent);
+}
+.btn-primary:hover {
+  background-color: #00e68a;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.5); /* Neon glow */
+}
+.btn-primary:disabled {
+  background-color: #333;
+  color: #888;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background-color: var(--input-background);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+  background-color: var(--border-color);
+  transform: translateY(-2px);
+}
+
+.btn-light {
+  background-color: var(--button-background);
+  color: var(--button-text);
+}
+.btn-light:hover {
+  background-color: var(--button-hover-background);
+  transform: translateY(-2px);
+}
+
+/* --- Auth Toggle & Status --- */
+.toggle-text {
+  margin-top: 30px;
+  color: var(--text-secondary);
+}
+
+.toggle-link {
+  color: var(--color-accent); /* Use accent color */
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+.toggle-link:hover {
+  text-decoration: underline;
+}
+
+.status-message {
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.status-message.success {
+  color: var(--color-accent);
+}
+.status-message.error {
+  color: #ff4d4d;
+}
+
+/* 9. Layout element styles */
+nav {
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.8); /* Semi-transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+footer {
+  width: 100%;
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+}
+
+/* =========================================
+--- 2. Homepage Styles (Style 1 - Green) ---
+=========================================
+*/
+
+/* --- Page Load & Text Animations --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.homepage-wrapper {
+  width: 100%;
+  padding-top: 60px; /* Offset for fixed navbar */
+  /* Page load fade in */
+  animation: pageFadeIn 0.5s ease-in-out;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hero-title,
+.hero-subtitle,
+.hero-cta-group {
+  opacity: 0; /* Start hidden */
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Staggered text animation */
+.hero-subtitle {
+  animation-delay: 0.2s;
+}
+.hero-cta-group {
+  animation-delay: 0.4s;
+}
+
+/* --- Scroll-Based Animations --- */
+/* This links the animation to the scrollbar */
+@keyframes slide-in-up-on-scroll {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-section,
+.feature-card,
+.problem-box {
+  /* Attach the animation */
+  animation: slide-in-up-on-scroll linear;
+  animation-timeline: view();
+  /* Define when the animation runs */
+  /* Starts when 10% of element enters view, ends when 40% is covered */
+  animation-range: entry 10% cover 40%;
+}
+
+/* --- Shared Section Styles --- */
+.section-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+}
+
+/* --- 1. Hero Section --- */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  padding: 80px 20px;
+  text-align: center;
+  background: radial-gradient(
+    circle,
+    rgba(10, 10, 10, 1) 0%,
+    var(--background-color) 70%
+  );
+  overflow: hidden; /* Contain animations */
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.text-highlight {
+  color: var(--color-accent);
+  text-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* --- 2. Story Block --- */
+.color-block-accent {
+  background-color: var(--color-accent);
+  color: #000; /* Black text on bright green */
+  padding: 80px 0;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 4rem;
+  align-items: center;
+}
+
+.story-eyebrow {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.story-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.story-body p {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 1.5rem;
+}
+.story-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- 3. Problem Section --- */
+.problem-section {
+  padding: 80px 0;
+  background-color: var(--background-color);
+}
+
+.problem-box {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 2rem auto 0 auto;
+  text-align: left;
+}
+
+.problem-box-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.problem-box p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.problem-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- 4. Features Section --- */
+.features-section {
+  padding: 80px 0;
+  background-color: var(--card-background);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background-color: var(--input-background);
+  border: 1px solid var(--border-color);
+  padding: 30px;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 20px rgba(0, 255, 153, 0.1);
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-accent); /* Green headings */
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+}
+
+/* --- 5. Final CTA Block --- */
+.cta-block {
+  padding: 80px 0;
+  text-align: center;
+}
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.cta-subtitle {
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.9);
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+}
+
+/* --- Responsive Media Queries --- */
+@media (min-width: 768px) {
+  /* --- Auth Page Grid --- */
+  .auth-layout-grid {
+    /* Activate 2-column layout */
+    grid-template-columns: 1fr 1fr;
+  }
+  .auth-branding-panel {
+    display: flex; /* Show branding panel */
+  }
+
+  /* --- Homepage --- */
+  .hero-title {
+    font-size: 4rem;
+  }
+  .hero-cta-group {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .auth-layout-grid {
+    grid-template-columns: 55% 45%; /* Give form slightly more space */
+  }
+
+  /* --- Homepage --- */
+  .grid-layout {
+    grid-template-columns: 1fr 2fr;
+  }
+  .story-title {
+    font-size: 2.8rem;
+  }
+  .section-title,
+  .story-title,
+  .cta-title {
+    font-size: 3rem;
+  }
+}
+/* =========================================
+--- 3. Dashboard Page Styles ---
+=========================================
+*/
+
+.dashboard-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 100px; /* Offset for fixed navbar (60px) + extra space */
+  padding-bottom: 80px;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevents horizontal scroll from animations */
+}
+
+/* Ensures content sits above the particles */
+.dashboard-content {
+  position: relative;
+  z-index: 2;
+}
+
+.dashboard-header {
+  margin-bottom: 40px;
+}
+
+/* Overrides the 'text-align: center' from the homepage styles */
+.dashboard-title {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 2.8rem; /* Slightly larger than section-title */
+}
+
+.dashboard-subtitle {
+  text-align: left;
+  margin: 0;
+  max-width: 100%; /* Remove max-width from homepage style */
+  color: var(--text-secondary);
+}
+
+/* Adds space between dashboard sections */
+.section-break {
+  margin-top: 60px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 30px;
+}
+
+/*
+  New styles to make your "feature-card" interactive
+  and add the locked/upcoming states.
+*/
+.dashboard-card {
+  position: relative; /* For the badge */
+  display: flex;
+  flex-direction: column; /* Ensures button is always at the bottom */
+ 
+}
+
+/* Makes the whole card clickable, except for the locked ones */
+.dashboard-card:not(.locked) {
+  cursor: pointer;
+}
+
+/* Re-uses your existing :hover from feature-card and adds the border */
+.dashboard-card:not(.locked):hover {
+  border-color: var(--color-accent);
+  
+}
+
+.card-meta {
+  color: var(--color-accent); /* Use accent color for time */
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+/* Utility class for text-secondary color */
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* Pushes the button to the bottom of the flex card */
+.card-button {
+  width: 100%;
+  margin-top: auto; /* This is the magic! */
+  padding-top: 12px; /* A bit more padding */
+  padding-bottom: 12px;
+}
+
+/* Locked state for upcoming features */
+.dashboard-card.locked {
+  opacity: 0.7;
+  filter: grayscale(50%);
+  background-color: var(--card-background); /* Darker background */
+  cursor: not-allowed;
+}
+
+.card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--color-accent);
+  color: #000;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.graph-placeholder {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--border-color);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-top: 20px;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.card-button {
+  transition: none;
+}
+
+/* Remove the 'pop' (transform) and 'glow' (box-shadow) */
+.btn-primary.card-button:hover {
+  transform: none;  /* This removes the 'pop' */
+  box-shadow: none; /* This removes the 'glow' */
+
+  /* Keep the background color change from global style for feedback */
+  background-color: #d6dde6;

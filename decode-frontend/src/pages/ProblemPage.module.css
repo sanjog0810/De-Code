@@ -1,0 +1,61 @@
+/* src/pages/ProblemPage.module.css */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* Dark background for the whole page */
+  background-color: #000000;
+}
+
+.mainWorkspace {
+  flex-grow: 1;
+  /* Padding around the resizable panels */
+  padding: 0.75rem;
+  display: flex;
+  /* Fixes a bug where PanelGroup doesn't fill */
+  overflow: hidden;
+}
+
+/* This targets the PanelGroup component from react-resizable-panels */
+.mainWorkspace > div {
+  width: 100%;
+}
+
+/* --- This is the "space in between" --- */
+.resizeHandle,
+.resizeHandleVertical {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  position: relative;
+}
+
+.resizeHandle {
+  /* This is the vertical handle (left/right) */
+  width: 0.75rem !important; /* The space */
+}
+
+.resizeHandleVertical {
+  /* This is the horizontal handle (top/bottom) */
+  height: 0.75rem !important; /* The space */
+}
+
+/* --- Optional: Add a visual indicator on hover --- */
+.resizeHandle[data-resize-handle-state='hover'],
+.resizeHandle[data-resize-handle-state='drag'] {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.resizeHandleVertical[data-resize-handle-state='hover'],
+.resizeHandleVertical[data-resize-handle-state='drag'] {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* The panels themselves are just transparent containers */
+.leftPanel,
+.rightPanel {
+  background: transparent;
+}

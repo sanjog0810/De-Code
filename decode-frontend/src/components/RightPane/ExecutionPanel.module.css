@@ -1,0 +1,131 @@
+/* src/components/RightPane/ExecutionPanel.module.css */
+.panelContainer {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  border-radius: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.75rem;
+}
+
+.chatHeader {
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #444;
+  margin-bottom: 0.5rem;
+  flex-shrink: 0; /* ✅ Tell header not to shrink */
+}
+
+/* ✅ NEW: This wrapper will grow/shrink and scroll */
+.contentArea {
+  flex-grow: 1;      /* Take all available space */
+  overflow-y: auto;  /* Add scrollbar *only* here */
+  min-height: 0;     /* CRITICAL: Allows this flex item to shrink to zero */
+}
+
+/* ✅ MODIFIED: chatBox no longer needs to grow */
+.chatBox {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.userMessage,
+.aiMessage {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  max-width: 85%;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+.userMessage {
+  background-color: #0056b3;
+  color: #ffffff;
+  align-self: flex-end;
+}
+.aiMessage {
+  background-color: #444;
+  color: #f0f0f0;
+  align-self: flex-start;
+}
+
+/* ✅ MODIFIED: statusIndicators no longer needs min-height */
+.statusIndicators {
+  padding: 0 0.5rem 0.5rem;
+}
+
+.typing {
+  font-style: italic;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.chatInput {
+  background-color: #3a3a3a;
+  color: #f0f0f0;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 0.5rem;
+  width: 100%;
+  min-height: 40px;
+  resize: none;
+  margin-top: 0.5rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  flex-shrink: 0; /* ✅ Tell input not to shrink */
+}
+.chatInput:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  flex-shrink: 0; /* ✅ Tell button row not to shrink */
+}
+
+.viewButton {
+  background-color: transparent;
+  color: #aaa;
+  border: 1px solid #555;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.viewButton:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+.sendButton {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+.sendButton:hover {
+  background-color: #0056b3;
+}
+.sendButton:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
