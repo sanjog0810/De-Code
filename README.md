@@ -38,6 +38,53 @@ DECODE consists of 8 microservices:
 
 All services are containerized using Docker and stored on AWS ECR.
 
+### System Architecture
+
+```mermaid
+flowchart LR
+    subgraph Client
+        UI[React Frontend]
+    end
+
+    subgraph API[API Gateway]
+        GW[API Gateway Service]
+    end
+
+    subgraph Auth
+        AUTH[Authentication Service]
+        UDB[(Postgres - User DB)]
+    end
+
+    subgraph Users
+        US[User Service]
+    end
+
+    subgraph AI
+        AIS[AI Service]
+        TTS[Text-to-Speech Service]
+        GEMINI[Gemini API]
+    end
+
+    subgraph Questions
+        QS[Question Service]
+        MDB[(MongoDB - Questions DB)]
+    end
+
+    UI --> GW
+
+    GW --> AUTH
+    AUTH --> UDB
+
+    GW --> US
+
+    GW --> AIS
+    AIS --> GEMINI
+    AIS --> TTS
+
+    GW --> QS
+    QS --> MDB
+```
+
 ### Architecture Flow
 
 - API Gateway handles all incoming requests and routes them to the appropriate services.
