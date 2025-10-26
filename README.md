@@ -46,11 +46,11 @@ All services are containerized using Docker and stored on AWS ECR.
 ```mermaid
 graph TD
     %% --- Definitions & Styling ---
-    classDef frontend fill:#D1E8FF,stroke:#007bff,stroke-width:2px,font-weight:bold;
-    classDef service fill:#CFF0CC,stroke:#28a745,stroke-width:2px;
-    classDef specialSvc fill:#E2D1FF,stroke:#6f42c1,stroke-width:2px;
-    classDef gateway fill:#F8D7DA,stroke:#dc3545,stroke-width:2px,font-weight:bold;
-    classDef db fill:#FFF3CD,stroke:#ffc107,stroke-width:2px;
+    classDef frontend fill:#D1E8FF,stroke:#007bff,stroke-width:2px,font-weight:bold,color:#000000;
+    classDef service fill:#CFF0CC,stroke:#28a745,stroke-width:2px,color:#000000;
+    classDef specialSvc fill:#E2D1FF,stroke:#6f42c1,stroke-width:2px,color:#000000;
+    classDef gateway fill:#F8D7DA,stroke:#dc3545,stroke-width:2px,font-weight:bold,color:#000000;
+    classDef db fill:#FFF3CD,stroke:#ffc107,stroke-width:2px,color:#000000;
 
     %% --- Top-Level Nodes ---
     FE([Frontend Client])
@@ -101,6 +101,7 @@ graph TD
     %% --- Top-Level Connections ---
     FE <== "All Text-to-Speech" ==> TTS
     FE <== "All Main API Requests" ==> APIGW
+
 ```
 ### Architecture Flow
 
